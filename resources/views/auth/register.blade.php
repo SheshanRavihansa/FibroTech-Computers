@@ -18,30 +18,43 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
+                            <a href="{{route('web')}}" class="">
                                 <h3 class="text-primary">FibroTech</h3>
                             </a>
                             <h3>Sign Up</h3>
                         </div>
                         <!-- Alerts -->
-                        {{-- <div class="alert alert-danger" role="alert">
-                            A simple danger alert—check it out!
-                        </div> --}}
+                        <div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>
+                                                <strong>{{ $error }}</strong>
+                                            </li>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
                         <!-- Alerts end-->
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="post" action="{{ route('register') }}">
+                            @csrf
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingText" name="firstName"
-                                    :value="old('firstName')" required autocomplete="firstName" placeholder="jhondoe">
+                                    :value="old('firstName')" autocomplete="firstName" placeholder="jhondoe">
                                 <label for="floatingText">First Name</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingText" name="lastName"
-                                    :value="old('lastName')" required autocomplete="lastName" placeholder="jhondoe">
+                                    :value="old('lastName')" autocomplete="lastName" placeholder="jhondoe">
                                 <label for="floatingText">Last Name</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput" name="email"
-                                    :value="old('email')" required autocomplete="email" placeholder="email@example.com">
+                                    :value="old('email')" autocomplete="email" placeholder="email@example.com">
                                 <label for="floatingInput">Email address</label>
                             </div>
                             <div class="form-floating mb-4">
@@ -51,12 +64,12 @@
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="password" class="form-control" id="floatingPassword"
-                                    name="password_confirmation" required placeholder="Password">
+                                    name="password_confirmation" placeholder="Password">
                                 <label for="floatingPassword">Confirm Password</label>
                             </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
                         </form>
-                        <p class="text-center mb-0">Already have an Account? <a href="">Log In</a></p>
+                        <p class="text-center mb-0">Already have an Account? <a href="{{route('login')}}">Log In</a></p>
                     </div>
                 </div>
             </div>
