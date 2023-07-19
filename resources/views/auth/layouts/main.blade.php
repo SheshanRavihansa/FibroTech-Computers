@@ -5,15 +5,13 @@
 
     @include('auth.layouts.head')
 
-    @stack('styles')
-    
 </head>
 
 <body>
 
     @yield('main-content')
-
-    @stack('scripts')
+    
+    @include('auth.layouts.footer')
 
 </body>
 

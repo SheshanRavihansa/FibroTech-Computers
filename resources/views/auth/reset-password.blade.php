@@ -1,6 +1,6 @@
 @extends('auth.layouts.main')
 
-@section('title', 'FibroTech || Register')
+@section('title', 'FibroTech || Forgot Password')
 
 @section('main-content')
     <div class="container-fluid position-relative d-flex p-0">
@@ -17,10 +17,10 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="{{route('web')}}" class="">
+                            <a href="{{ route('web') }}" class="">
                                 <h3 class="text-primary">FibroTech</h3>
                             </a>
-                            <h3>Sign Up</h3>
+                            <h3>Forgot Password</h3>
                         </div>
                         <!-- Alerts -->
                         <div>
@@ -37,26 +37,22 @@
                                     </ul>
                                 </div>
                             @endif
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
                         </div>
                         <!-- Alerts end-->
-                        <form method="post" action="{{ route('register') }}">
+                        <form method="post" action="{{ route('password.store') }}">
                             @csrf
-                            <!-- first name -->
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" name="firstName"
-                                    value="{{old('firstName')}}" autocomplete="firstName" placeholder="jhondoe">
-                                <label for="floatingText">First Name</label>
-                            </div>
-                            <!-- last name -->
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" name="lastName"
-                                    value="{{old('lastName')}}" autocomplete="lastName" placeholder="jhondoe">
-                                <label for="floatingText">Last Name</label>
-                            </div>
+                            <!-- Password Reset Token -->
+                            <input type="hidden" name="token" value="{{ $request->route('token') }}">
                             <!-- Email Address -->
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" name="email"
-                                    value="{{old('email')}}" autocomplete="email" placeholder="email@example.com">
+                                <input type="hidden" class="form-control" id="floatingInput" name="email"
+                                    value="{{ old('email', $request->email) }}" autocomplete="email"
+                                    placeholder="email@example.com">
                                 <label for="floatingInput">Email address</label>
                             </div>
                             <!-- Password -->
@@ -71,9 +67,8 @@
                                     name="password_confirmation" placeholder="Password">
                                 <label for="floatingPassword">Confirm Password</label>
                             </div>
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Reset Password</button>
                         </form>
-                        <p class="text-center mb-0">Already have an Account? <a href="{{route('login')}}">Log In</a></p>
                     </div>
                 </div>
             </div>
