@@ -16,9 +16,8 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="{{route('admin.dashboard')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="{{route('admin.settings')}}" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Settings</a>
-            <a href="" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>users</a>
+            <a href="{{route('admin.dashboard')}}" class="nav-item nav-link {{ isRouteActive('admin.dashboard') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="{{route('admin.settings')}}" class="nav-item nav-link {{ isRouteActive('admin.settings') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Settings</a>
         </div>
     </nav>
 </div>

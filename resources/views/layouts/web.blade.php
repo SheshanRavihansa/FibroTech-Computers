@@ -20,10 +20,13 @@
 
     @include('layouts.web.partials.notification')
 
-    {{-- @include('layouts.web.partials.topbar') --}}
-
     <!-- Header -->
-    {{-- @include('layouts.web.partials.header') --}}
+    <header class="header shop">
+        <!-- Topbar -->
+        @include('layouts.web.partials.topbar')
+        <!-- End Topbar -->
+        {{-- @include('layouts.web.partials.header') --}}
+    </header>
     <!--/ End Header -->
 
     @yield('main-content')
