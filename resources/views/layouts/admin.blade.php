@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    @stack('css')
     @include('layouts.admin.partials.head')
+    @stack('css')
 </head>
 
 <body>

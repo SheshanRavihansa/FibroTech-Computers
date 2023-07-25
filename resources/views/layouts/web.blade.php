@@ -31,7 +31,7 @@
 
     @yield('main-content')
 
-    {{-- @include('frontend.layouts.footer') --}}
+    @include('layouts.web.partials.footer')
 
     @stack('scripts')
     <!-- Jquery -->
