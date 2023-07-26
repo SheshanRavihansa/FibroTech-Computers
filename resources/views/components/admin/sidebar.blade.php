@@ -1,7 +1,7 @@
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-secondary navbar-dark">
-        <a href="index.html" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary"></i><img src="" alt="logo"></h3>
+        <a href="{{route('home')}}" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary"></i><img style="max-width: 12rem; max-height: fit-content;" src="{{ $data->logo }}" alt="Fibrotech logo"></h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">Jhon Doe</h6>
+                <h6 class="mb-0"></h6>
                 <span>Admin</span>
             </div>
         </div>

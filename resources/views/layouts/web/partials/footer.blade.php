@@ -5,10 +5,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-6 col-12">
+                    @php
+                        $settings = DB::table('settings')->get()->first();
+                    @endphp
                     <!-- Single Widget -->
                     <div class="single-footer about">
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('backend/img/logo2.png') }}" alt="#"></a>
+                            <a href="{{route('home')}}"><img src="{{ $settings->logo }}" alt="#"></a>
                         </div>
                         @php
                             $settings = DB::table('settings')->get();
@@ -79,7 +82,6 @@
                             </ul>
                         </div>
                         <!-- End Single Widget -->
-                        <div class="sharethis-inline-follow-buttons"></div>
                     </div>
                     <!-- End Single Widget -->
                 </div>
@@ -93,8 +95,8 @@
                 <div class="row">
                     <div class="col-lg-6 col-12">
                         <div class="left">
-                            <p>Copyright © {{ date('Y') }} <a href=""
-                                    target="_blank">Prajwal Rai</a> - All Rights Reserved.</p>
+                            <p>Copyright © {{ date('Y') }} <a href="{{route('home')}}" target="_blank">Fibrotech</a> - All
+                                Rights Reserved.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-12">

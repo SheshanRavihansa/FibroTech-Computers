@@ -1,4 +1,5 @@
 @extends('layouts.web')
+@section('title', 'Fibrotech || Home')
 {{-- @section('main-content')
     @auth
         <h1>You are logged in !</h1>
