@@ -20,20 +20,22 @@ use App\Http\Controllers\AdminController;
 //     return view('welcome');
 // })->name('home');
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/dashboard', function () {
-    return view('layouts.admin');
+    return view('admin.pages.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 
 Route::prefix('admin/dashboard')->group(function(){
     // Settings
     Route::get('/settings', [AdminController:: class, 'settings'])->name('admin.settings');
+    Route::post('/settings', [AdminController:: class, 'settingsUpdate'])->name('admin.settings.update');
 });
-
-
-
 
 
 Route::middleware('auth')->group(function () {

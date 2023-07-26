@@ -4823,6 +4823,8 @@ Version:1.0
 }
 .footer .about .logo{
 	margin-bottom:20px;
+    max-width: 20rem;
+    max-height: fit-content;
 }
 .footer .about .logo img{}
 .footer .about .text{
