@@ -25,7 +25,7 @@
         <!-- Topbar -->
         @include('layouts.web.partials.topbar')
         <!-- End Topbar -->
-        {{-- @include('layouts.web.partials.header') --}}
+        @include('layouts.web.partials.header')
     </header>
     <!--/ End Header -->
 
