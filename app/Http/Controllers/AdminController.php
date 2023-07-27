@@ -33,8 +33,10 @@ class AdminController extends Controller
 
         if ($status) {
             $request->session()->flash('success', 'Setting successfully updated');
+            notify()->success('Setting successfully updated');
         } else {
             $request->session()->flash('error', 'Please try again');
+            notify()->error('Please try again');
         }
 
         return back();

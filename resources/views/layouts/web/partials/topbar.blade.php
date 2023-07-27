@@ -26,8 +26,6 @@
                 <!-- Top Right -->
                 <div class="right-content">
                     <ul class="list-main">
-                        <li><i class="ti-location-pin"></i> <a href="">Track Order</a></li>
-                        {{-- <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> --}}
                         @auth
                             @role('admin')
                                 <li><i class="ti-user"></i> <a href="{{ route('admin.dashboard') }}" target="_blank">Admin
