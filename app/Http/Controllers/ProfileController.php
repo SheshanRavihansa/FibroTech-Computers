@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Validation\Rules;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -16,23 +18,39 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('auth.profile', [
             'user' => $request->user(),
+            // dd($request->user())
         ]);
     }
 
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request)
     {
-        $request->user()->fill($request->validated());
+        $request->validate([
+            'firstName' => ['required', 'string', 'max:100'],
+            'lastName' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['string', 'max:100', 'nullable'],
+            'address' => ['string', 'nullable'],
+        ]);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $data = $request->all();
+        // dump($data);
+
+        $status = $request->user()->fill($data)->save();
+
+        // dd($status);
+
+        if ($status) {
+            $request->session()->flash('success', 'Profile successfully updated');
+            notify()->success('Profile successfully updated');
+        } else {
+            $request->session()->flash('error', 'Please try again');
+            notify()->error('Please try again');
         }
-
-        $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
