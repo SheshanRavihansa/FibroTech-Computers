@@ -18,7 +18,7 @@ class SettingsSeeder extends Seeder
 
             'short_des' => "Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.",
 
-            'logo' => 'logo.jpg',
+            'logo' => '/storage/photos/1/Logo/800-200-fibrotech.png',
             'address' => "NO. 342 - kandupallama Street, Hanthana Srilanka",
             'email' => "fibrotech@email.com",
             'phone' => "+060 (800) 801-582",

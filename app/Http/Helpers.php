@@ -22,8 +22,8 @@ if (!function_exists('imageCheck')) {
 }
 
 if (!function_exists('isRouteActive')) {
-    function isRouteActive($routeName)
+    function isRouteActive(array $routeName)
     {
-        return Route::currentRouteName() === $routeName;
+        return in_array(Route::currentRouteName(), $routeName);
     }
 }
