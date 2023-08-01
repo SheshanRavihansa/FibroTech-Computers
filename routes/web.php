@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +33,13 @@ Route::get('/admin/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 
-Route::prefix('admin/dashboard')->group(function(){
+Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['web', 'auth']], function () {
     // Settings
-    Route::get('/settings', [AdminController:: class, 'settings'])->name('admin.settings');
-    Route::post('/settings', [AdminController:: class, 'settingsUpdate'])->name('admin.settings.update');
+    Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+    Route::post('/settings', [AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
+    //Categories
+    Route::resource('categories', CategoryController::class);
+    Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
 });
 
 
@@ -44,4 +49,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

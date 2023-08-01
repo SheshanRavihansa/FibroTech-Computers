@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
+use App\Models\Category;
 
 if (!function_exists('imageCheck')) {
     function imageCheck($image)
@@ -25,5 +26,15 @@ if (!function_exists('isRouteActive')) {
     function isRouteActive(array $routeName)
     {
         return in_array(Route::currentRouteName(), $routeName);
+    }
+}
+
+class Helper
+{
+    public static function getAllCategory()
+    {
+        $category = new Category();
+        $activeCat = $category->getAllMainsWithSubcats();
+        return $activeCat;
     }
 }

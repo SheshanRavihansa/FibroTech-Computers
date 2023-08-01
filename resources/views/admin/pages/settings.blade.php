@@ -54,7 +54,7 @@
 
                     <div>
                         <h6 class="mb-1">Logo</h6>
-                        <h6 class="mb-2 mt-1"><span class="small text-warning">Choose only one image! *</span></h6>
+                        <h6 class="mb-2 mt-1"><span class="small text-warning">* Choose only one image! 800 x 200 px</span></h6>
                         <div class="input-group ">
                             <span class="input-group-btn">
                                 <a id="lfm" data-input="thumbnail1" data-preview="holder1" class="btn btn-primary">
@@ -69,7 +69,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div id="holder1" style="margin-top:15px;background-color: #222f3e;" class="col-xl-6 mb-3">
+                        <div id="holder1" class="col-xl-6 mb-3">
                             <img src="{{ $data->logo }}"
                                 style="margin-top:15px; max-width: 20rem; max-height: fit-content;">
                         </div>

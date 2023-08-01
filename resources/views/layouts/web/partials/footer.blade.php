@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-5 col-md-6 col-12">
                     @php
-                        $settings = DB::table('settings')->get()->first();
+                        $settings = DB::table('settings')->get()->first()
                     @endphp
                     <!-- Single Widget -->
                     <div class="single-footer about">

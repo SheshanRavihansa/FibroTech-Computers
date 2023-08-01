@@ -10,7 +10,8 @@
             <a href="{{route('home')}}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img class="rounded-circle me-lg-2" src="/storage/user.png" alt=""
                     style="width: 40px; height: 40px;">
-                <span class="d-none d-lg-inline-flex">{{ auth()->user()->firstName . ' ' . auth()->user()->lastName }}
+                <span class="d-none d-lg-inline-flex">
+                    {{ Auth::user()->firstName . ' ' . Auth::user()->lastName }}
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">

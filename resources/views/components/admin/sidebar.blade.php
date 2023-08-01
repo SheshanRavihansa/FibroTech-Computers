@@ -1,7 +1,8 @@
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-secondary navbar-dark">
-        <a href="{{route('home')}}" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary"></i><img style="max-width: 12rem; max-height: fit-content;" src="{{ $data->logo }}" alt="Fibrotech logo"></h3>
+        <a href="{{ route('home') }}" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary"></i><img style="max-width: 12rem; max-height: fit-content;" src="{{ $data->logo }}"
+                    alt="Fibrotech logo"></h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
@@ -16,8 +17,21 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="{{route('admin.dashboard')}}" class="nav-item nav-link {{ isRouteActive('admin.dashboard') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="{{route('admin.settings')}}" class="nav-item nav-link {{ isRouteActive('admin.settings') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Settings</a>
+            <a href="{{ route('admin.dashboard') }}"
+                class="nav-item nav-link {{ isRouteActive(['admin.dashboard']) ? 'active' : '' }}"><i
+                    class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <div class="nav-item dropdown">
+                <a href="#"
+                    class="nav-link dropdown-toggle {{ isRouteActive(['category.index', 'category.create']) ? 'active' : '' }}"
+                    data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Categories</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="{{ route('categories.index') }}" class="dropdown-item">Categories</a>
+                    <a href="{{ route('categories.create') }}" class="dropdown-item">Add Category</a>
+                </div>
+            </div>
+            <a href="{{ route('admin.settings') }}"
+                class="nav-item nav-link {{ isRouteActive(['admin.settings']) ? 'active' : '' }}"><i
+                    class="fa fa-tachometer-alt me-2"></i>Settings</a>
         </div>
     </nav>
 </div>

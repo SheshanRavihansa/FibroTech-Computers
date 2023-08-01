@@ -2,8 +2,24 @@
 :root {
     --primary: #eb1616;
     --secondary: #191c24;
-    --light: #6c7293;
+    --light: #a7aabc; /* Font color */
     --dark: #000000;
+}
+
+.b-success {
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #04AA6D;
+}
+
+.b-warning {
+    color: rgb(31, 31, 31);
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ffc107;
 }
 
 .back-to-top {

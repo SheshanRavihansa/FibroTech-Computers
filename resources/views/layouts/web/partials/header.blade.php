@@ -31,9 +31,9 @@
                     <div class="search-bar">
                         <select>
                             <option>All Category</option>
-                            {{-- @foreach (Helper::getAllCategory() as $cat)
-                                <option>{{ $cat->title }}</option>
-                            @endforeach --}}
+                            @foreach (Helper::getAllCategory() as $category)
+                                <option>{{ $category->name }}</option>
+                            @endforeach
                         </select>
                         <form method="POST" action="">
                             @csrf
@@ -101,19 +101,50 @@
                             <div class="navbar-collapse">
                                 <div class="nav-inner">
                                     <ul class="nav main-menu menu navbar-nav">
-                                        <li class="{{ Request::path() == 'home' ? 'active' : '' }}"><a
-                                                href="{{-- route('home') --}}">Home</a></li>
+                                        <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a
+                                                href="{{ route('home') }}">Home</a></li>
                                         <li class="{{ Request::path() == 'about-us' ? 'active' : '' }}"><a
                                                 href="{{-- route('about-us') --}}">About Us</a></li>
-                                        <li class="@if (Request::path() == 'product-grids' || Request::path() == 'product-lists') active @endif"><a
-                                                href="{{-- route('product-grids') --}}">Products</a><span
-                                                class="new">New</span></li>
-                                        {{-- Helper::getHeaderCategory() --}}
-                                        {{-- <li class="{{ Request::path() == 'blog' ? 'active' : '' }}"><a
-                                                href="{{ route('blog') }}">Blog</a></li> --}}
-
-                                        {{-- <li class="{{ Request::path() == 'contact' ? 'active' : '' }}"><a
-                                                href="{{route('contact')}}">Contact Us</a></li> --}}
+                                        <li class="@if (Request::path() == 'product-grids' || Request::path() == 'product-lists') active @endif">
+                                            <a href="{{-- route('product-grids') --}}">Products</a>
+                                            {{-- <span class="new">New</span> --}}
+                                        </li>
+                                        @php
+                                            $category = new \App\Models\Category();
+                                            $menu = $category->getAllMainsWithSubcats();
+                                        @endphp
+                                        @if ($menu)
+                                            <li>
+                                                <a href="javascript:void(0);">Category<i class="ti-angle-down"></i></a>
+                                                <ul class="dropdown border-0 shadow">
+                                                    @foreach ($menu as $cat_info)
+                                                        @if ($cat_info->sub_cats->count() > 0)
+                                                            <li>
+                                                                <a
+                                                                    href="{{-- route('product-cat', $cat_info->slug) --}}">{{ $cat_info->name }}</a>
+                                                                <ul class="dropdown sub-dropdown border-0 shadow">
+                                                                    @foreach ($cat_info->sub_cats as $sub_menu)
+                                                                        <li>
+                                                                            <a href="{{-- route('product-sub-cat', [$cat_info->slug, $sub_menu->slug]) --}}">
+                                                                                {{ $sub_menu->name }}
+                                                                            </a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </li>
+                                                        @else
+                                                            <li>
+                                                                <a href="{{-- route('product-cat', $cat_info->slug) --}}">
+                                                                    {{ $cat_info->name }}
+                                                                </a>
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endif
+                                        <li class="{{ Request::path() == 'contact' ? 'active' : '' }}"><a
+                                                href="{{-- route('contact') --}}">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
