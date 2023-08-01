@@ -51,7 +51,7 @@ return [
             'startup_view' => 'list',
             'max_size'     => 50000, // size in KB
             'thumb' => true,
-            'thumb_width' => 200,
+            'thumb_width' => 300,
             'thumb_height' => 200,
             'valid_mime'   => [
                 'image/jpeg',
@@ -67,7 +67,7 @@ return [
             'startup_view' => 'list',
             'max_size'     => 50000, // size in KB
             'thumb' => true,
-            'thumb_width' => 200,
+            'thumb_width' => 300,
             'thumb_height' => 200,
             'valid_mime'   => [
                 'image/jpeg',

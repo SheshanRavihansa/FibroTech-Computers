@@ -111,13 +111,13 @@
                                         </li>
                                         @php
                                             $category = new \App\Models\Category();
-                                            $menu = $category->getAllMainsWithSubcats();
+                                            $header_cat = $category->getAllMainsWithSubcats();
                                         @endphp
-                                        @if ($menu)
+                                        @if ($header_cat)
                                             <li>
                                                 <a href="javascript:void(0);">Category<i class="ti-angle-down"></i></a>
                                                 <ul class="dropdown border-0 shadow">
-                                                    @foreach ($menu as $cat_info)
+                                                    @foreach ($header_cat as $cat_info)
                                                         @if ($cat_info->sub_cats->count() > 0)
                                                             <li>
                                                                 <a
@@ -134,7 +134,8 @@
                                                             </li>
                                                         @else
                                                             <li>
-                                                                <a href="{{-- route('product-cat', $cat_info->slug) --}}">
+                                                                <a
+                                                                    href="{{-- route('product-cat', $cat_info->slug) --}}">
                                                                     {{ $cat_info->name }}
                                                                 </a>
                                                             </li>

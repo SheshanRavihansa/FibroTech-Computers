@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 
@@ -40,6 +41,9 @@ Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['web', 'auth']], f
     //Categories
     Route::resource('categories', CategoryController::class);
     Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+    //Banner
+    Route::resource('banner', BannerController::class);
+    Route::delete('banner/delete/{id}', [BannerController::class, 'destroy'])->name('categories.delete');
 });
 
 

@@ -82,7 +82,7 @@
                             <input id="thumbnail1" class="form-control" type="text" name="image" value="">
                         </div>
                         <div style="float: right;">
-                            @error('Image')
+                            @error('image')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

@@ -22,11 +22,20 @@
                     class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <div class="nav-item dropdown">
                 <a href="#"
-                    class="nav-link dropdown-toggle {{ isRouteActive(['category.index', 'category.create']) ? 'active' : '' }}"
+                    class="nav-link dropdown-toggle {{ isRouteActive(['categories.index', 'categories.create', 'categories.edit']) ? 'active' : '' }}"
                     data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Categories</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="{{ route('categories.index') }}" class="dropdown-item">Categories</a>
                     <a href="{{ route('categories.create') }}" class="dropdown-item">Add Category</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#"
+                    class="nav-link dropdown-toggle {{ isRouteActive(['banner.index', 'banner.create', 'banner.edit']) ? 'active' : '' }}"
+                    data-bs-toggle="dropdown"><i class="fas fa-scroll me-2"></i>Banner</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="{{ route('banner.index') }}" class="dropdown-item">Banners</a>
+                    <a href="{{ route('banner.create') }}" class="dropdown-item">Create Banner</a>
                 </div>
             </div>
             <a href="{{ route('admin.settings') }}"

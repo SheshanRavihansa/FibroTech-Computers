@@ -43,7 +43,6 @@ class CategoryController extends Controller
         ]);
 
         $data = $request->all();
-
         $slug = Str::slug($request->category_name);
         $cat_check = Category::where('slug', $slug)->count();
 
@@ -84,7 +83,6 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        // dump($category);
 
         $request->validate([
             'category_name' => 'required|string',
@@ -107,7 +105,7 @@ class CategoryController extends Controller
 
         $status = $category->fill($data)->save();
         if ($status) {
-            notify()->success('Category successfully created');
+            notify()->success('Category successfully updated');
         } else {
             notify()->error('Something Went Wrong');
         }
