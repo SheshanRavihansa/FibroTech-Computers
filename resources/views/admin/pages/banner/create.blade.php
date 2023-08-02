@@ -44,7 +44,7 @@
                         <div class="px-4">
                             <h6 class="mb-1 mt-4">Image</h6>
                             <h6 class="mb-2 mt-1">
-                                <span class="small text-warning">* Choose only one image!</span>
+                                <span class="small text-warning">* Choose only one image! 1200 x 628 px</span>
                             </h6>
                             <div class="input-group ">
                                 <span class="input-group-btn">

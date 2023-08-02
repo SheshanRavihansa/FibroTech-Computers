@@ -1,17 +1,74 @@
 @extends('layouts.web')
 @section('title', 'Fibrotech || Home')
-{{-- @section('main-content')
-    @auth
-        <h1>You are logged in !</h1>
-        @role('admin')
-            <h1>I am an admin!</h1>
-        @else
-            <h1>I am an user...</h1>
-            <h1><a href="{{ route('admin.dashboard') }}">dashboard</a></h1>
-        @endrole
+@section('main-content')
+    @if (count($banners) > 0)
+        <section id="Gslider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @foreach ($banners as $key => $banner)
+                    <li data-target="#Gslider" data-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}">
+                    </li>
+                @endforeach
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @foreach ($banners as $key => $banner)
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <img class="first-slide" src="{{ $banner->image }}" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block text-left">
+                            <h1 class="wow fadeInDown">{{ $banner->title }}</h1>
+                            <p>{!! html_entity_decode($banner->description) !!}</p>
+                            <a class="btn btn-lg ws-btn wow fadeInUpBig" href="{{-- route('product-grids') --}}" role="button">Shop
+                                Now<i class="far fa-arrow-alt-circle-right"></i></i></a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#Gslider" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#Gslider" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </section>
+    @endif
+@endsection
 
-        <h1><a href="{{ route('logout') }}">Logout</a></h1>
-    @else
-        <h1>Please <a href="{{ route('login') }}">LogIn</a> !</h1>
-    @endauth
-@endsection --}}
+
+@push('styles')
+    <style>
+        #Gslider .carousel-inner {
+            background: #000000;
+            color: black;
+            height: 628px;
+        }
+
+        #Gslider .carousel-inner img {
+            object-fit: cover;
+            width: 100%;
+            height: 628px;
+            opacity: .8;
+        }
+
+        #Gslider .carousel-inner .carousel-caption {
+            bottom: 35%;
+        }
+
+        #Gslider .carousel-inner .carousel-caption h1 {
+            font-size: 50px;
+            font-weight: bold;
+            line-height: 100%;
+            color: #F7941D;
+        }
+
+        #Gslider .carousel-inner .carousel-caption p {
+            font-size: 18px;
+            color: black;
+            margin: 28px 0 28px 0;
+        }
+
+        #Gslider .carousel-indicators {
+            bottom: 70px;
+        }
+    </style>
+@endpush

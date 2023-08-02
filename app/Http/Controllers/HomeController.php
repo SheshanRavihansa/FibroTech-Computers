@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +12,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $banners= Banner::where('status', 'active')->limit(5)->orderBy('id', 'DESC')->get();
+        // dd($banners);
+        return view('home.index', compact('banners'));
     }
 
     /**
