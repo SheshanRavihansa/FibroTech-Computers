@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 
@@ -43,7 +44,11 @@ Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['web', 'auth']], f
     Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
     //Banner
     Route::resource('banner', BannerController::class);
-    Route::delete('banner/delete/{id}', [BannerController::class, 'destroy'])->name('categories.delete');
+    Route::delete('banner/delete/{id}', [BannerController::class, 'destroy'])->name('banner.delete');
+    //Brand
+    Route::resource('brand', BrandController::class);
+    Route::delete('brand/delete/{id}', [BrandController::class, 'destroy'])->name('brand.delete');
+
 });
 
 

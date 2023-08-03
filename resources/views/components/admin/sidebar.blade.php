@@ -32,10 +32,19 @@
             <div class="nav-item dropdown">
                 <a href="#"
                     class="nav-link dropdown-toggle {{ isRouteActive(['banner.index', 'banner.create', 'banner.edit']) ? 'active' : '' }}"
-                    data-bs-toggle="dropdown"><i class="fas fa-scroll me-2"></i>Banner</a>
+                    data-bs-toggle="dropdown"><i class="fas fa-scroll me-2"></i>Banners</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="{{ route('banner.index') }}" class="dropdown-item">Banners</a>
                     <a href="{{ route('banner.create') }}" class="dropdown-item">Create Banner</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#"
+                    class="nav-link dropdown-toggle {{ isRouteActive(['brand.index', 'brand.create', 'brand.edit']) ? 'active' : '' }}"
+                    data-bs-toggle="dropdown"><i class="fas fa-copyright me-2"></i></i></i>Brands</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="{{ route('brand.index') }}" class="dropdown-item">Brands</a>
+                    <a href="{{ route('brand.create') }}" class="dropdown-item">Create Brand</a>
                 </div>
             </div>
             <a href="{{ route('admin.settings') }}"

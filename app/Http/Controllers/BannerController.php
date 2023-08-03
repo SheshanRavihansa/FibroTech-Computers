@@ -33,7 +33,7 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $this->validate($request, [
+        $request->validate([
             'banner_title' => 'string|required|max:50',
             'description' => 'string|nullable',
             'image' => 'string|required',
@@ -85,7 +85,7 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         $banner=Banner::findOrFail($id);
-        $this->validate($request, [
+        $request->validate([
             'banner_title' => 'string|required|max:50',
             'description' => 'string|nullable',
             'image' => 'string|required',
