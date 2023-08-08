@@ -123,13 +123,13 @@ class CategoryController extends Controller
     {
         try {
             $category = Category::findOrFail($id);
-            $child_cat_id = Category::where('parent_id', $id)->pluck('id');
+            $sub_cat_id = Category::where('parent_id', $id)->pluck('id');
 
             $status = $category->delete();
 
             if ($status) {
-                if (count($child_cat_id) > 0) {
-                    Category::whereIn('id', $child_cat_id)->update(['is_parent' => 1]);
+                if (count($sub_cat_id) > 0) {
+                    Category::whereIn('id', $sub_cat_id)->update(['is_parent' => 1]);
                 }
             }
             return response()->json(['message' => 'Category deleted successfully.']);
@@ -137,7 +137,18 @@ class CategoryController extends Controller
             return response()->json(['message' => 'Error: Unable to delete category.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        return response()->json(['message' => 'Category deleted successfully.']);
+        // return response()->json(['message' => 'Category deleted successfully.']);
+    }
 
+
+    public function getSubByParent(Request $request)
+    {
+        $sub_cat = Category::where('parent_id',$request->id)->orderBy('id','ASC')->pluck('name','id');
+
+        if (count($sub_cat) <= 0) {
+            return response()->json(['status' => false, 'msg' => '', 'data' => null]);
+        } else {
+            return response()->json(['status' => true, 'msg' => '', 'data' => $sub_cat]);
+        }
     }
 }

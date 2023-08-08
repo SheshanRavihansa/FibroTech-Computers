@@ -32,8 +32,6 @@
     @yield('main-content')
 
     @include('layouts.web.partials.footer')
-
-    @stack('scripts')
     <!-- Jquery -->
     <script src="{{ asset('assets/web/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/web/js/jquery-migrate-3.0.0.js') }}"></script>
@@ -62,13 +60,11 @@
     <script src="{{ asset('assets/web/js/scrollup.js') }}"></script>
     <!-- Onepage Nav JS -->
     <script src="{{ asset('assets/web/js/onepage-nav.min.js') }}"></script>
-    {{-- Isotope --}}
-    <script src="{{ asset('assets/web/js/isotope/isotope.pkgd.min.js') }}"></script>
     <!-- Easing JS -->
     <script src="{{ asset('assets/web/js/easing.js') }}"></script>
     <!-- Active JS -->
     <script src="{{ asset('assets/web/js/active.js') }}"></script>
-
+    @stack('scripts')
     <script>
         setTimeout(function() {
             $('.alert').slideUp();

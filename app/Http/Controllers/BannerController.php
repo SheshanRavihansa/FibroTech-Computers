@@ -121,6 +121,6 @@ class BannerController extends Controller
             return response()->json(['message' => 'Error: Unable to delete Banner.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        return response()->json(['message' => 'Banner deleted successfully.']);
+        // return response()->json(['message' => 'Banner deleted successfully.']);
     }
 }

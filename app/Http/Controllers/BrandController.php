@@ -63,7 +63,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $brand = Brand::findOrFail($id); 
+        $brand = Brand::findOrFail($id);
         return view('admin.pages.brand.edit', compact('brand'));
     }
 
@@ -111,6 +111,6 @@ class BrandController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error: Unable to delete Brand.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-        return response()->json(['message' => 'Brand deleted successfully.']);
+        // return response()->json(['message' => 'Brand deleted successfully.']);
     }
 }

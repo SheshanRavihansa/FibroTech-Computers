@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,9 +13,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $banners= Banner::where('status', 'active')->limit(5)->orderBy('id', 'DESC')->get();
+        $featured = Product::where('status', 'active')->where('is_featured', 1)->orderBy('price', 'DESC')->limit(2)->get();
+        $product_lists = Product::where('status', 'active')->orderBy('id', 'DESC')->limit(8)->get();
+        $banners = Banner::where('status', 'active')->limit(5)->orderBy('id', 'DESC')->get();
         // dd($banners);
-        return view('home.index', compact('banners'));
+        return view('home.index', compact('banners', 'product_lists','featured'));
     }
 
     /**

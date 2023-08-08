@@ -19,7 +19,9 @@
         <div class="navbar-nav w-100">
             <a href="{{ route('admin.dashboard') }}"
                 class="nav-item nav-link {{ isRouteActive(['admin.dashboard']) ? 'active' : '' }}"><i
-                    class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    class="fa fa-tachometer-alt me-2"></i>Dashboard
+            </a>
+            <hr class="m-2">
             <div class="nav-item dropdown">
                 <a href="#"
                     class="nav-link dropdown-toggle {{ isRouteActive(['categories.index', 'categories.create', 'categories.edit']) ? 'active' : '' }}"
@@ -29,6 +31,7 @@
                     <a href="{{ route('categories.create') }}" class="dropdown-item">Add Category</a>
                 </div>
             </div>
+            <hr class="m-2">
             <div class="nav-item dropdown">
                 <a href="#"
                     class="nav-link dropdown-toggle {{ isRouteActive(['banner.index', 'banner.create', 'banner.edit']) ? 'active' : '' }}"
@@ -38,15 +41,27 @@
                     <a href="{{ route('banner.create') }}" class="dropdown-item">Create Banner</a>
                 </div>
             </div>
+            <hr class="m-2">
             <div class="nav-item dropdown">
                 <a href="#"
                     class="nav-link dropdown-toggle {{ isRouteActive(['brand.index', 'brand.create', 'brand.edit']) ? 'active' : '' }}"
-                    data-bs-toggle="dropdown"><i class="fas fa-copyright me-2"></i></i></i>Brands</a>
+                    data-bs-toggle="dropdown"><i class="fas fa-copyright me-2"></i>Brands</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="{{ route('brand.index') }}" class="dropdown-item">Brands</a>
                     <a href="{{ route('brand.create') }}" class="dropdown-item">Create Brand</a>
                 </div>
             </div>
+            <hr class="m-2">
+            <div class="nav-item dropdown">
+                <a href="#"
+                    class="nav-link dropdown-toggle {{ isRouteActive(['product.index', 'product.create', 'product.edit']) ? 'active' : '' }}"
+                    data-bs-toggle="dropdown"><i class="fas fa-boxes me-2"></i>Products</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="{{ route('product.index') }}" class="dropdown-item">Products</a>
+                    <a href="{{ route('product.create') }}" class="dropdown-item">Create product</a>
+                </div>
+            </div>
+            <hr class="m-2">
             <a href="{{ route('admin.settings') }}"
                 class="nav-item nav-link {{ isRouteActive(['admin.settings']) ? 'active' : '' }}"><i
                     class="fa fa-tachometer-alt me-2"></i>Settings</a>

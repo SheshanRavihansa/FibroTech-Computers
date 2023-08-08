@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
 
 /*
@@ -40,14 +41,19 @@ Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['web', 'auth']], f
     Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
     Route::post('/settings', [AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
     //Categories
-    Route::resource('categories', CategoryController::class);
-    Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+    Route::resource('/categories', CategoryController::class);
+    Route::delete('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+    // Ajax for sub category
+    Route::post('/category/{id}/sub', [CategoryController::class, 'getSubByParent']);
     //Banner
-    Route::resource('banner', BannerController::class);
-    Route::delete('banner/delete/{id}', [BannerController::class, 'destroy'])->name('banner.delete');
+    Route::resource('/banner', BannerController::class);
+    Route::delete('/banner/delete/{id}', [BannerController::class, 'destroy'])->name('banner.delete');
     //Brand
-    Route::resource('brand', BrandController::class);
-    Route::delete('brand/delete/{id}', [BrandController::class, 'destroy'])->name('brand.delete');
+    Route::resource('/brand', BrandController::class);
+    Route::delete('/brand/delete/{id}', [BrandController::class, 'destroy'])->name('brand.delete');
+    //Product
+    Route::resource('/product', ProductController::class);
+    Route::delete('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 
 });
 

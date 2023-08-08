@@ -44,7 +44,7 @@
                                 {{-- image --}}
                                 <td>
                                     @if ($category->image)
-                                        <img style="max-width: 100px;" src="{{ $category->image }}"
+                                        <img class="zoom" style="max-width: 100px;" src="{{ $category->image }}"
                                             alt="{{ $category->name }}">
                                     @else
                                         N/A
@@ -52,7 +52,7 @@
                                 </td>
                                 {{-- actions --}}
                                 <td style="vertical-align: middle;">
-                                    <div tyle="display: flex; justify-content: center; align-items: center;">
+                                    <div style="display: flex; justify-content: center; align-items: center;">
                                         <a href="{{ route('categories.edit', $category->id) }}"
                                             class="btn btn-info btn-sm  m-1 p-1 "
                                             style="height:30px; width:50px;border-radius:10px;"><i class="fas fa-edit"></i>
@@ -60,15 +60,8 @@
                                         <button class="btn btn-danger btn-sm dltBtn m-1 p-1"
                                             data-category-id="{{ $category->id }}"
                                             style="height:30px; width:50px;border-radius:10px;">
-                                            <i class="fas fa-trash-alt"></i></button>
-                                        {{-- <form method="POST" action="{{ route('categories.destroy', $category->id) }}"
-                                            data-category-id="{{ $category->id }}">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-danger btn-sm dltBtn m-1 p-1"
-                                                style="height:30px; width:50px;border-radius:10px;">
-                                                <i class="fas fa-trash-alt"></i></button>
-                                        </form> --}}
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -87,6 +80,14 @@
         .dataTables_wrapper {
             height: 100%;
             padding: 2rem;
+        }
+
+        .zoom {
+            transition: transform .2s;
+        }
+
+        .zoom:hover {
+            transform: scale(2);
         }
     </style>
 @endpush

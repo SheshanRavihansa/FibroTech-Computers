@@ -37,7 +37,7 @@
                                     @endif
                                 </td>
                                 <td style="vertical-align: middle;">
-                                    <div tyle="display: flex; justify-content: center; align-items: center;">
+                                    <div style="display: flex; justify-content: center; align-items: center;">
                                         <a href="{{ route('banner.edit', $banner->id) }}"
                                             class="btn btn-info btn-sm  m-1 p-1 "
                                             style="height:30px; width:50px;border-radius:10px;"><i class="fas fa-edit"></i>
@@ -68,11 +68,10 @@
 
         .zoom {
             transition: transform .2s;
-            /* Animation */
         }
 
         .zoom:hover {
-            transform: scale(2.5);
+            transform: scale(2);
         }
     </style>
 @endpush
