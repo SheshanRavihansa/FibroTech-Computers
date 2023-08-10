@@ -14,8 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::getAllCategories();
-        // dd($categories);
+        $categories = Category::get();
         return view('admin.pages.categories.index', compact('categories'));
     }
 
@@ -24,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $parent_cats = Category::getAllCategories();
+        $parent_cats = Category::where('is_parent', 1)->orderBy('name','ASC')->get();
         // dd($parent_cat);
         return view('admin.pages.categories.create', compact('parent_cats'));
     }

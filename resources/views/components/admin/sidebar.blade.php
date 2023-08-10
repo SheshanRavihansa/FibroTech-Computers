@@ -63,8 +63,7 @@
             </div>
             <hr class="m-2">
             <a href="{{ route('admin.settings') }}"
-                class="nav-item nav-link {{ isRouteActive(['admin.settings']) ? 'active' : '' }}"><i
-                    class="fa fa-tachometer-alt me-2"></i>Settings</a>
+                class="nav-item nav-link {{ isRouteActive(['admin.settings']) ? 'active' : '' }}"><i class="fas fa-cog me-2"></i>Settings</a>
         </div>
     </nav>
 </div>

@@ -24,11 +24,6 @@ class Category extends Model
         return $this->hasOne(Category::class, 'id', 'parent_id');
     }
 
-    public static function getAllCategories()
-    {
-        return Category::orderBy('id', 'DESC')->with('parent_info')->get();
-    }
-
     public function sub_cats()
     {
         return $this->hasMany(Category::class, 'parent_id', 'id')->where('status', 'active');

@@ -9,7 +9,8 @@
                     {{-- Name --}}
                     <div class="bg-secondary rounded h-100 px-4 pt-4">
                         <h6 class="mb-2">Category Name</h6>
-                        <input class="form-control form-control-lg" type="text" name="category_name" value="{{ old('category_name') }}">
+                        <input class="form-control form-control-lg" type="text" name="category_name"
+                            value="{{ old('category_name') }}">
                         <div style="float: right;">
                             @error('category_name')
                                 <span class="text-danger">{{ $message }}</span>
@@ -29,7 +30,7 @@
                         <div class=" rounded h-100 col-xl-4">
                             <h6 class="mb-2">Status</h6>
                             <select name="status" class="form-select form-select-lg">
-                                <option hidden selected >Select Status</option>
+                                <option hidden selected>Select Status</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
                             </select>
@@ -69,7 +70,7 @@
                         </div>
                     </div>
                     {{-- image --}}
-                    <div class="px-4">
+                    <div class="px-4" id="image">
                         <h6 class="mb-1 mt-4">Image</h6>
                         <h6 class="mb-2 mt-1"><span class="small text-warning">* Choose only one image! 600 x 370 px</span>
                         </h6>
@@ -115,8 +116,10 @@
 
                 if (selectedValue === 'parent' || selectedValue === 'palceholder') {
                     $('#parent_cat').hide();
+                    $('#image').show();
                 } else {
                     $('#parent_cat').show();
+                    $('#image').hide();
                 }
             });
             // Trigger the 'change' event on page load to handle visibility

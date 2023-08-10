@@ -56,7 +56,11 @@
                                 {{-- price --}}
                                 <td>Rs.{{ number_format($product->price, 2, '.', ',') }}</td>
                                 {{-- Discount --}}
-                                <td>{{ $product->discount }}% OFF</td>
+                                @if ($product->discount == null)
+                                    <td>N/A</td>
+                                @else
+                                    <td>{{ $product->discount }}% OFF</td>
+                                @endif
                                 {{-- image --}}
                                 <td>
                                     @php
