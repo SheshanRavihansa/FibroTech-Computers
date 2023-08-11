@@ -21,12 +21,21 @@ class Category extends Model
 
     public function parent_info()
     {
-        return $this->hasOne(Category::class, 'id', 'parent_id');
+        return $this->hasOne(Category::class, 'id', 'parent_id')->where('status', 'active');
     }
 
     public function sub_cats()
     {
         return $this->hasMany(Category::class, 'parent_id', 'id')->where('status', 'active');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'cat_id', 'id')->where('status', 'active');
+    }
+    public function sub_cat_products()
+    {
+        return $this->hasMany(Product::class, 'sub_cat_id', 'id')->where('status', 'active');
     }
 
     public static function getAllMainsWithSubcats()

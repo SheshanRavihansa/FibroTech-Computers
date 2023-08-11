@@ -35,7 +35,7 @@
                                 <option>{{ $category->name }}</option>
                             @endforeach
                         </select>
-                        <form method="POST" action="">
+                        <form method="POST" action="{{ route('product.search') }}">
                             @csrf
                             <input name="search" placeholder="Search Products Here....." type="search">
                             <button class="btnn" type="submit"><i class="ti-search"></i></button>
@@ -106,7 +106,7 @@
                                         <li class="{{ Request::path() == 'about-us' ? 'active' : '' }}"><a
                                                 href="{{-- route('about-us') --}}">About Us</a></li>
                                         <li class="@if (Request::path() == 'product-grids' || Request::path() == 'product-lists') active @endif">
-                                            <a href="{{-- route('product-grids') --}}">Products</a>
+                                            <a href="{{ route('products') }}">Products</a>
                                             {{-- <span class="new">New</span> --}}
                                         </li>
                                         @php
@@ -121,11 +121,12 @@
                                                         @if ($cat_info->sub_cats->count() > 0)
                                                             <li>
                                                                 <a
-                                                                    href="{{-- route('product-cat', $cat_info->slug) --}}">{{ $cat_info->name }}</a>
+                                                                    href="{{ route('product.cat', $cat_info->slug) }}">{{ $cat_info->name }}</a>
                                                                 <ul class="dropdown sub-dropdown border-0 shadow">
                                                                     @foreach ($cat_info->sub_cats as $sub_menu)
                                                                         <li>
-                                                                            <a href="{{-- route('product-sub-cat', [$cat_info->slug, $sub_menu->slug]) --}}">
+                                                                            <a
+                                                                                href="{{ route('product.sub.cat', [$cat_info->slug, $sub_menu->slug]) }}">
                                                                                 {{ $sub_menu->name }}
                                                                             </a>
                                                                         </li>
@@ -134,8 +135,7 @@
                                                             </li>
                                                         @else
                                                             <li>
-                                                                <a
-                                                                    href="{{-- route('product-cat', $cat_info->slug) --}}">
+                                                                <a href="{{ route('product.cat', $cat_info->slug) }}">
                                                                     {{ $cat_info->name }}
                                                                 </a>
                                                             </li>

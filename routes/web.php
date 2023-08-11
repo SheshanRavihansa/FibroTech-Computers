@@ -8,6 +8,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WebController;
 use App\Http\Controllers\SubCategoryController;
 
 /*
@@ -35,26 +36,43 @@ Route::get('/admin/dashboard', function () {
     return view('admin.pages.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-
+// Admin area
 Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['web', 'auth']], function () {
     // Settings
     Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
     Route::post('/settings', [AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
+
     //Categories
     Route::resource('/categories', CategoryController::class);
     Route::delete('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+
     // Ajax for sub category
     Route::post('/category/{id}/sub', [CategoryController::class, 'getSubByParent']);
+
     //Banner
     Route::resource('/banner', BannerController::class);
     Route::delete('/banner/delete/{id}', [BannerController::class, 'destroy'])->name('banner.delete');
+
     //Brand
     Route::resource('/brand', BrandController::class);
     Route::delete('/brand/delete/{id}', [BrandController::class, 'destroy'])->name('brand.delete');
-    //Product
+
+    //Products
     Route::resource('/product', ProductController::class);
     Route::delete('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+    Route::get('/products', [HomeController::class, 'products'])->name('products');
 
+});
+
+// User Area
+Route::middleware('web')->group(function () {
+    Route::get('/products', [WebController::class, 'products'])->name('products');
+    Route::post('/products/search', [WebController::class, 'productSearch'])->name('product.search');
+    Route::get('/products/detail/{slug}', [WebController::class, 'productDetail'])->name('product.detail');
+    Route::match(['get', 'post'], '/products/filter', [WebController::class, 'productFilter'])->name('shop.filter');
+    Route::get('/products/category/{slug}', [WebController::class, 'productCat'])->name('product.cat');
+    Route::get('/products/subcategory/{slug}/{subCatSlug}', [WebController::class, 'productSubCat'])->name('product.sub.cat');
+    Route::get('/products/brand/{slug}', [WebController::class, 'productBrand'])->name('product.brand');
 });
 
 

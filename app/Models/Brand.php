@@ -14,4 +14,9 @@ class Brand extends Model
         'slug',
         'status'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'brand_id', 'id')->where('status', 'active');
+    }
 }
