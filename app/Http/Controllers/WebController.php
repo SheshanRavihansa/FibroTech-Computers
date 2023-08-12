@@ -86,6 +86,8 @@ class WebController extends Controller
 
     public function productDetail($slug)
     {
-        $product_details;
+        $product_details = Product::where('slug', $slug)->first();
+        // dd($product_details->reviews);
+        return view('web.pages.single-product', compact('product_details'));
     }
 }

@@ -38,7 +38,7 @@
                 </div>
                 <div class="content">
                     <h5>
-                        <a href="{{-- route('product-detail', $product->slug) --}}">{{ $product->name }}</a>
+                        <a href="{{ route('product.details', $product->slug) }}">{{ $product->name }}</a>
                     </h5>
                     @php
                         $after_discount = $product->price - ($product->price * $product->discount) / 100;

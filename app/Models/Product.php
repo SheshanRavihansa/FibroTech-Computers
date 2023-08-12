@@ -38,4 +38,12 @@ class Product extends Model
     {
         return $this->hasOne(Brand::class, 'id', 'brand_id');
     }
+    public function related_products()
+    {
+        return $this->hasMany(Product::class, 'cat_id', 'cat_id')->where('status', 'active')->orderBy('id', 'DESC')->limit(8);
+    }
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class, 'product_id', 'id')->where('status', 'active')->orderBy('id', 'DESC');
+    }
 }

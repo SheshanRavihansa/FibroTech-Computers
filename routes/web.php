@@ -8,6 +8,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\SubCategoryController;
 
@@ -68,7 +69,8 @@ Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['web', 'auth']], f
 Route::middleware('web')->group(function () {
     Route::get('/products', [WebController::class, 'products'])->name('products');
     Route::post('/products/search', [WebController::class, 'productSearch'])->name('product.search');
-    Route::get('/products/detail/{slug}', [WebController::class, 'productDetail'])->name('product.detail');
+    Route::post('/products/review/{slug}', [ProductReviewController::class, 'store'])->name('review.product.submit');
+    Route::get('/products/detail/{slug}', [WebController::class, 'productDetail'])->name('product.details');
     Route::match(['get', 'post'], '/products/filter', [WebController::class, 'productFilter'])->name('shop.filter');
     Route::get('/products/category/{slug}', [WebController::class, 'productCat'])->name('product.cat');
     Route::get('/products/subcategory/{slug}/{subCatSlug}', [WebController::class, 'productSubCat'])->name('product.sub.cat');

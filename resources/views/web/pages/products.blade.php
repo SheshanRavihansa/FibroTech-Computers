@@ -59,7 +59,7 @@
                                     <div class="col-lg-4 col-md-6 col-12">
                                         <div class="single-product">
                                             <div class="product-img">
-                                                <a href="{{-- route('product-detail', $product->slug) --}}">
+                                                <a href="{{ route('product.details', $product->slug) }}">
                                                     @php
                                                         $photo = explode(',', $product->image);
                                                     @endphp
@@ -79,14 +79,18 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h3><a href="{{-- route('product-detail', $product->slug) --}}">{{ $product->name }}</a>
+                                                <h3>
+                                                    <a
+                                                        href="{{ route('product.details', $product->slug) }}">{{ $product->name }}</a>
                                                 </h3>
                                                 @php
                                                     $after_discount = $product->price - ($product->price * $product->discount) / 100;
                                                 @endphp
                                                 <span>Rs.{{ number_format($after_discount, 2) }}</span>
-                                                <del
-                                                    style="padding-left:4%;">Rs.{{ number_format($product->price, 2) }}</del>
+                                                @if ($product->discount)
+                                                    <del
+                                                        style="padding-left:4%;">Rs.{{ number_format($product->price, 2) }}</del>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

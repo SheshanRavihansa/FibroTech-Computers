@@ -58,7 +58,7 @@
                                 @endif
                                 <div class="content">
                                     <h3>{{ $cat->name }}</h3>
-                                    <a href="{{-- route('product-cat', $cat->slug) --}}">Discover Now</a>
+                                    <a href="{{ route('product.cat', $cat->slug) }}">Discover Now</a>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                                         <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $product->cat_id }}">
                                             <div class="single-product">
                                                 <div class="product-img">
-                                                    <a href="{{-- route('product-detail', $product->slug) --}}">
+                                                    <a href="{{ route('product.details', $product->slug) }}">
                                                         @php
                                                             $photo = explode(',', $product->image);
                                                             // dd($photo);
@@ -153,7 +153,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3><a href="{{-- route('product-detail', $product->slug) --}}">{{ $product->name }}</a>
+                                                    <h3><a
+                                                            href="{{ route('product.details', $product->slug) }}">{{ $product->name }}</a>
                                                     </h3>
                                                     <div class="product-price">
                                                         @php
@@ -195,8 +196,12 @@
                                 <img style="width: 500px; height: 650px; object-fit: cover" src="{{ $photo[0] }}"
                                     alt="{{ $photo[0] }}">
                                 <div class="content">
-                                    <h3>{{ $data->name }} <br>Up to<span> {{ $data->discount }}%</span></h3>
-                                    <a href="{{-- route('product-detail', $data->slug) --}}">Shop Now</a>
+                                    <h3>{{ $data->name }}<br>
+                                        @if ($data->discount)
+                                            Up to<span> {{ $data->discount }}%</span>
+                                        @endif
+                                    </h3>
+                                    <a href="{{ route('products') }}">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -224,7 +229,7 @@
                             <!-- Start Single Product -->
                             <div class="single-product">
                                 <div class="product-img">
-                                    <a href="route('product-detail', $product->slug)">
+                                    <a href="{{ route('product.details', $product->slug) }}">
                                         @php
                                             $photo = explode(',', $product->image);
                                             // dd($photo);
@@ -248,7 +253,7 @@
                                     </div>
                                 </div>
                                 <div class="product-content">
-                                    <h3><a href="{{-- route('product-detail', $product->slug) --}}">{{ $product->name }}</a>
+                                    <h3><a href="{{ route('product.details', $product->slug) }}">{{ $product->name }}</a>
                                     </h3>
                                     <div class="product-price">
                                         @php
@@ -495,7 +500,9 @@
             });
 
             // Show only the first 8 items for "All products" initially
-            $grid.isotope({ filter: '.isotope-item:lt(8)' });
+            $grid.isotope({
+                filter: '.isotope-item:lt(8)'
+            });
         });
 
         $(isotopeButton).each(function() {
@@ -507,5 +514,4 @@
             });
         });
     </script>
-
 @endpush
