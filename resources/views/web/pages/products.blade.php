@@ -73,7 +73,8 @@
                                                 </a>
                                                 <div class="button-head">
                                                     <div class="product-action-2">
-                                                        <a title="Add to cart" href="{{-- route('add-to-cart', $product->slug) --}}">
+                                                        <a title="Add to cart"
+                                                            href="{{ route('add.to.cart', $product->slug) }}">
                                                             Add to cart</a>
                                                     </div>
                                                 </div>

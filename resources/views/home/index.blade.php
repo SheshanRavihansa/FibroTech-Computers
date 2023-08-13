@@ -135,19 +135,11 @@
                                                                     Off</span>
                                                             @endif
                                                         @endif
-
-
                                                     </a>
                                                     <div class="button-head">
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#{{ $product->id }}"
-                                                                title="Quick View" href="#"><i
-                                                                    class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                            <a title="Wishlist" href="{{-- route('add-to-wishlist', $product->slug) --}}"><i
-                                                                    class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                                        </div>
                                                         <div class="product-action-2">
-                                                            <a title="Add to cart" href="{{-- route('add-to-cart', $product->slug) --}}">Add to
+                                                            <a title="Add to cart"
+                                                                href="{{ route('add.to.cart', $product->slug) }}">Add to
                                                                 cart</a>
                                                         </div>
                                                     </div>
@@ -239,16 +231,8 @@
                                         <span class="out-of-stock">Hot</span>
                                     </a>
                                     <div class="button-head">
-                                        {{-- <div class="product-action">
-                                                <a data-toggle="modal" data-target="#{{ $product->id }}"
-                                                    title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-                                                        Shop</span></a>
-                                                <a title="Wishlist"
-                                                    href="{{ route('add-to-wishlist', $product->slug) }}"><i
-                                                        class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                            </div> --}}
                                         <div class="product-action-2">
-                                            <a href="{{-- route('add-to-cart', $product->slug) --}}">Add to cart</a>
+                                            <a href="{{ route('add.to.cart', $product->slug) }}">Add to cart</a>
                                         </div>
                                     </div>
                                 </div>
@@ -264,13 +248,6 @@
                                             <del style="padding-left:4%;">Rs.{{ number_format($product->price, 2) }}</del>
                                         @endif
                                     </div>
-                                    {{-- <div class="product-price">
-                                            <span class="old">${{ number_format($product->price, 2) }}</span>
-                                            @php
-                                                $after_discount = $product->price - ($product->price * $product->discount) / 100;
-                                            @endphp
-                                            <span>${{ number_format($after_discount, 2) }}</span>
-                                        </div> --}}
                                 </div>
                             </div>
                             <!-- End Single Product -->
@@ -313,13 +290,15 @@
                                                     // dd($photo);
                                                 @endphp
                                                 <img src="{{ $photo[0] }}" alt="{{ $photo[0] }}">
-                                                <a href="{{-- route('add-to-cart', $product->slug) --}}" class="buy"><i
+                                                <a href="{{ route('add.to.cart', $product->slug) }}" class="buy"><i
                                                         class="fa fa-shopping-bag"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 no-padding">
                                             <div class="content">
-                                                <h4 class="title"><a href="#">{{ $product->name }}</a></h4>
+                                                <h4 class="title"><a
+                                                        href="{{ route('product.details', $product->slug) }}">{{ $product->name }}</a>
+                                                </h4>
                                                 @if ($product->discount)
                                                     <p class="price with-discount">{{ $product->discount }}% OFF
                                                 @endif

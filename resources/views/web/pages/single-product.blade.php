@@ -81,7 +81,7 @@
                                 <!--/ End Description -->
                                 <!-- Product Buy -->
                                 <div class="product-buy">
-                                    <form action="{{-- route('single-add-to-cart') --}}" method="POST">
+                                    <form action="{{ route('single.add.to.cart') }}" method="POST">
                                         @csrf
                                         <div class="quantity">
                                             <h6>Quantity :</h6>
@@ -107,14 +107,8 @@
                                         </div>
                                         <div class="add-to-cart mt-4">
                                             <button type="submit" class="btn">Add to cart</button>
-                                            {{-- <a href="{{ route('add-to-wishlist', $product_detail->slug) }}"
-                                                class="btn min"><i class="ti-heart"></i></a> --}}
                                         </div>
                                     </form>
-                                    {{-- <p class="cat">Category :<a href="{{route('product-cat',$product_detail->cat_info['slug'])}}">{{$product_detail->cat_info['title']}}</a></p> --}}
-                                    {{-- @if ($product_detail->sub_cat_info)
-                                        <p class="cat mt-1">Sub Category :<a href="{{route('product-sub-cat',[$product_detail->cat_info['slug'],$product_detail->sub_cat_info['slug']])}}">{{$product_detail->sub_cat_info['title']}}</a></p>
-                                        @endif --}}
                                     <p class="availability">Stock : @if ($product_details->stock > 0)
                                             <span class="badge badge-success m-2 p-2">{{ $product_details->stock }}</span>
                                         @else

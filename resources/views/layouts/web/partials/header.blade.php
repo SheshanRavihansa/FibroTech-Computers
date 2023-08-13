@@ -45,45 +45,45 @@
             </div>
             <div class="col-lg-2 col-md-3 col-12">
                 <div class="right-bar">
-                    {{-- <div class="sinlge-bar shopping">
-                        <a href="{{ route('cart') }}" class="single-icon"><i class="ti-bag"></i> <span
-                                class="total-count">{{ Helper::cartCount() }}</span></a>
-                        <!-- Shopping Item -->
-                        @auth
+                    @auth
+                        <div class="sinlge-bar shopping">
+                            <a href="{{ route('cart') }}" class="single-icon"><i class="ti-bag"></i> <span
+                                    class="total-count">{{ count(Helper::getAllProductFromCart()) }}</span></a>
+                            <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
                                     <span>{{ count(Helper::getAllProductFromCart()) }} Items</span>
-                                    <a href="{{ route('cart')-- }}">View Cart</a>
+                                    <a href="{{ route('cart') }}">View Cart</a>
                                 </div>
                                 <ul class="shopping-list">
-                                    {{Helper::getAllProductFromCart()}}
                                     @foreach (Helper::getAllProductFromCart() as $data)
                                         @php
-                                            $photo = explode(',', $data->product['photo']);
+                                            $photo = explode(',', $data->product->image);
                                         @endphp
                                         <li>
-                                            <a href="{{ route('cart-delete', $data->id) }}" class="remove"
-                                                title="Remove this item"><i class="fa fa-remove"></i></a>
+                                            <a href="{{ route('cart.delete', $data->id) }}" class="remove" title="Remove this item"><i
+                                                    class="fa fa-remove"></i></a>
                                             <a class="cart-img" href="#"><img src="{{ $photo[0] }}"
                                                     alt="{{ $photo[0] }}"></a>
-                                            <h4><a href="{{ route('product-detail', $data->product['slug']) }}"
-                                                    target="_blank">{{ $data->product['title'] }}</a></h4>
+                                            <h4><a href="{{ route('product.details', $data->product->slug) }}"
+                                                    target="_blank">{{ $data->product->name }}</a></h4>
                                             <p class="quantity">{{ $data->quantity }} x - <span
-                                                    class="amount">${{ number_format($data->price, 2) }}</span></p>
+                                                    class="amount">Rs.{{ number_format($data->price, 2) }}</span></p>
                                         </li>
                                     @endforeach
                                 </ul>
                                 <div class="bottom">
                                     <div class="total">
                                         <span>Total</span>
-                                        <span class="total-amount">${{ number_format(Helper::totalCartPrice(), 2) }}</span>
+                                        <span
+                                            class="total-amount">Rs.{{ number_format(Helper::totalCartPrice(), 2) }}</span>
                                     </div>
-                                    <a href="{{ route('checkout') }}" class="btn animate">Checkout</a>
+                                    <a href="{{-- route('checkout') --}}" class="btn animate">Checkout</a>
                                 </div>
                             </div>
                         @endauth
                         <!--/ End Shopping Item -->
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         </div>
