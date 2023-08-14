@@ -21,7 +21,7 @@
     <!-- Start Checkout -->
     <section class="shop checkout section">
         <div class="container">
-            <form class="form" method="POST" action="{{ route('cart.order') }}">
+            <form class="form" method="POST" action="{{ route('checkout.order') }}">
                 @csrf
                 <div class="row">
                     <div class="col-lg-8 col-12">
@@ -68,11 +68,11 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-12">
+                                {{-- <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Country<span>*</span></label>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Address Line 1<span>*</span></label>
@@ -121,7 +121,7 @@
                                             $total_amount = Helper::totalCartPrice();
                                         @endphp
                                         <li class="last" id="order_total_price">
-                                            Total<span>${{ number_format($total_amount + 400, 2) }}</span>
+                                            Total<span>Rs.{{ number_format($total_amount + 400, 2) }}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -134,10 +134,8 @@
                                     <div class="checkbox">
                                         {{-- <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label> --}}
                                         <form-group>
-                                            <input name="payment_method" type="radio" value="cod"> <label> Cash On
-                                                Delivery</label><br>
-                                            <input name="payment_method" type="radio" value="paypal"> <label>
-                                                PayPal</label>
+                                            <input name="payment_method" type="radio" value="payhere"> <label>
+                                                Payhere</label>
                                         </form-group>
                                     </div>
                                 </div>

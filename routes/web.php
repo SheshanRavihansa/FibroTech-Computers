@@ -8,9 +8,11 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\PayhereController;
 use App\Http\Controllers\SubCategoryController;
 
 /*
@@ -79,7 +81,12 @@ Route::get('/cart/delete/{id}', [CartController::class, 'cartDelete'])->name('ca
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/update', [CartController::class, 'cartUpdate'])->name('cart.update');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout')->middleware('auth');
-Route::post('cart/order', 'OrderController@store')->name('cart.order');
+Route::post('/checkout/order', [OrderController::class, 'store'])->name('checkout.order')->middleware('auth');
+
+// Payhere
+Route::get('payhere/pay/{id}', [PayhereController::class, 'pay'])->name('payhere.pay');
+Route::get('payhere/return/{id}', [PayhereController::class, 'return'])->name('payhere.return');
+Route::get('payhere/cancel/{id}', [PayhereController::class, 'cancel'])->name('payhere.cancel');
 
 
 Route::middleware('auth')->group(function () {
