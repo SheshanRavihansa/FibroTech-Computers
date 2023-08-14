@@ -78,7 +78,7 @@
                                         <span
                                             class="total-amount">Rs.{{ number_format(Helper::totalCartPrice(), 2) }}</span>
                                     </div>
-                                    <a href="{{-- route('checkout') --}}" class="btn animate">Checkout</a>
+                                    <a href="{{ route('checkout') }}" class="btn animate">Checkout</a>
                                 </div>
                             </div>
                         @endauth

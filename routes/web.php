@@ -72,12 +72,14 @@ Route::middleware('web')->group(function () {
     Route::get('/products/brand/{slug}', [WebController::class, 'productBrand'])->name('product.brand');
 });
 
-// Cart
+// Cart and Order
 Route::get('/add-to-cart/{slug}', [CartController::class, 'addToCart'])->name('add.to.cart')->middleware('auth');
 Route::post('/add-to-cart', [CartController::class, 'singleAddToCart'])->name('single.add.to.cart')->middleware('auth');
 Route::get('/cart/delete/{id}', [CartController::class, 'cartDelete'])->name('cart.delete');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/update', [CartController::class, 'cartUpdate'])->name('cart.update');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::post('cart/order', 'OrderController@store')->name('cart.order');
 
 
 Route::middleware('auth')->group(function () {

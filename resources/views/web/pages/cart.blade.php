@@ -122,7 +122,7 @@
                                         </li>
                                     </ul>
                                     <div class="button5">
-                                        <a href="{{-- route('checkout') --}}" class="btn">Checkout</a>
+                                        <a href="{{ route('checkout') }}" class="btn">Checkout</a>
                                         <a href="{{ route('products') }}" class="btn">Continue shopping</a>
                                     </div>
                                 </div>

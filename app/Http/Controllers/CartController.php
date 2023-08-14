@@ -95,39 +95,45 @@ class CartController extends Controller
         return back()->with('error', 'Error please try again!.');
     }
 
-    public function cartUpdate(Request $request){
+    public function cartUpdate(Request $request)
+    {
         // dd($request->all());
-        if($request->quant){
+        if ($request->quant) {
             $error = array();
             $success = '';
-            foreach ($request->quant as $k=>$quant) {
+            foreach ($request->quant as $k => $quant) {
 
                 $id = $request->qty_id[$k];
 
                 $cart = Cart::find($id);
 
-                if($quant > 0 && $cart) {
+                if ($quant > 0 && $cart) {
 
-                    if($cart->product->stock < $quant){
+                    if ($cart->product->stock < $quant) {
                         // request()->session()->flash('error','Out of stock');
                         return back()->with('error', 'Out Of Stock');
                     }
                     $cart->quantity = ($cart->product->stock > $quant) ? $quant  : $cart->product->stock;
 
-                    if ($cart->product->stock <=0) continue;
-                    $after_price=($cart->product->price-($cart->product->price*$cart->product->discount)/100);
+                    if ($cart->product->stock <= 0) continue;
+                    $after_price = ($cart->product->price - ($cart->product->price * $cart->product->discount) / 100);
                     $cart->amount = $after_price * $quant;
 
                     $cart->save();
                     $success = 'Cart successfully updated!';
-                }else{
+                } else {
                     $error[] = 'Cart Invalid!';
                 }
             }
             return back()->with($error)->with('success', $success);
-        }else{
+        } else {
             return back()->with('Cart Invalid!');
         }
+    }
+
+    public function checkout(Request $request)
+    {
+        return view('web.pages.checkout');
     }
 
     /**
